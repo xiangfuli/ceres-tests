@@ -64,8 +64,6 @@ fi
 cd ${project_root_dir}/third_party/ceres-solver
 rm -rf build install
 mkdir -p build && mkdir -p install && cd build
-cmake -DCMAKE_INSTALL_PREFIX=${project_root_dir}/third_party/ceres-solvers/install -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:${project_root_dir}/third_party/eigen/install/share:${project_root_dir}/third_party/gflags/install/lib:${project_root_dir}/third_party/glog/install/lib .. -G "Unix Makefiles"
-make -j 4
-make install
-
-
+cmake -DCMAKE_INSTALL_PREFIX=${project_root_dir}/third_party/ceres-solver/install -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:${project_root_dir}/third_party/eigen/install/share:${project_root_dir}/third_party/gflags/install/lib:${project_root_dir}/third_party/glog/install/lib .. -G "Unix Makefiles"
+cmake --build . -j8
+cmake --install .
